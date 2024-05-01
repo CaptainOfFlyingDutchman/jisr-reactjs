@@ -6,17 +6,22 @@ export type FileProps = { node: FileSystemFile };
 
 export function File({ node }: FileProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
 
   return (
     <>
       <li key={node.name}>
         <span
-          className="file-name"
+          className={`file-name ${isHighlighted ? "file-highlighted" : ""}`}
           onContextMenu={(e) => {
             e.preventDefault();
             setMenuOpen((prev) => !prev);
           }}
-          onClick={() => setMenuOpen(false)}
+          onClick={() => {
+            setMenuOpen(false);
+
+            setIsHighlighted((prev) => !prev);
+          }}
         >
           📄 {node.name}
         </span>
