@@ -1,5 +1,6 @@
 import "./App.css";
 import { Tree } from "./components/Tree.tsx";
+import {Menu} from "./components/Menu.tsx";
 
 export function App() {
   return (
@@ -15,6 +16,7 @@ export function App() {
 
           <div className="content">
             <h1>Body content</h1>
+              <Menu />
           </div>
         </div>
       </div>

@@ -72,3 +72,23 @@ li {
 .content {
   flex-grow: 1;
 }
+
+.menu {
+  border: 1px solid lightgray;
+  inline-size: 5rem;
+  box-shadow: 1px 1px 4px lightgray;
+  border-radius: 4px;
+}
+
+.menu-item {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.menu-item:hover {
+  background-color: lightgray;
+}
+
+.menu-divider {
+  border: 0.5px solid lightgray;
+}
