@@ -1,9 +1,10 @@
-import { File } from "./File";
+import { File, FileProps } from "./File";
 import { useState } from "react";
+import { DirectoryName } from "./DirectoryName.tsx";
 
-import type { FileSystemFile } from "../data/fileSystem";
+type FolderProps = { node: FileProps["node"] };
 
-export function Folder({ node }: { node: FileSystemFile }) {
+export function Folder({ node }: FolderProps) {
   const [childrenVisible, setChildrenVisible] = useState(false);
 
   if (node.data) {
@@ -23,9 +24,9 @@ export function Folder({ node }: { node: FileSystemFile }) {
           <ul className="folder-children">
             {node.data.map((child) => {
               return child.type === "folder" ? (
-                <Folder node={child} />
+                <Folder key={child.name} node={child} />
               ) : (
-                <File node={child} />
+                <File key={child.name} node={child} />
               );
             })}
           </ul>
@@ -40,21 +41,5 @@ export function Folder({ node }: { node: FileSystemFile }) {
 
       <DirectoryName childrenVisible={childrenVisible} node={node} />
     </li>
-  );
-}
-
-function DirectoryName({
-  childrenVisible,
-  node,
-}: {
-  childrenVisible: boolean;
-  node: FileSystemFile;
-}) {
-  return (
-    <span className="folder-name">
-      {childrenVisible ? <span>📂 </span> : <span>📁 </span>}
-
-      {node.name}
-    </span>
   );
 }

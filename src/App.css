@@ -18,6 +18,10 @@ button {
   cursor: pointer;
 }
 
+.folder, .file-name {
+  cursor: default;
+}
+
 .folder .folder-name {
   margin-inline-start: 1rem;
 }
@@ -43,6 +47,7 @@ button {
 li {
   margin: 0.5rem;
   margin-inline: 0;
+  position: relative;
 }
 
 .page {
@@ -74,6 +79,7 @@ li {
 }
 
 .menu {
+  background-color: white;
   border: 1px solid lightgray;
   inline-size: 5rem;
   box-shadow: 1px 1px 4px lightgray;

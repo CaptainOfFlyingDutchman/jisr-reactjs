@@ -8,9 +8,9 @@ export function Tree() {
       <ul>
         {fileSystem.map((node) => {
           return node.type === "folder" ? (
-            <Folder node={node} />
+            <Folder key={node.name} node={node} />
           ) : (
-            <File node={node} />
+            <File key={node.name} node={node} />
           );
         })}
       </ul>
