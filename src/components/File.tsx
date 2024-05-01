@@ -1,6 +1,7 @@
 import type { FileSystemFile } from "../data/fileSystem";
 import { useState } from "react";
 import { Menu } from "./Menu.tsx";
+import { Icons } from "./Icons.tsx";
 
 export type FileProps = { node: FileSystemFile };
 
@@ -23,7 +24,8 @@ export function File({ node }: FileProps) {
             setIsHighlighted((prev) => !prev);
           }}
         >
-          📄 {node.name}
+          <span className="file-icon">{Icons[node.meta as string]}</span>
+          <span>{node.name}</span>
         </span>
 
         {menuOpen && (

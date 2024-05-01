@@ -42,10 +42,18 @@ button {
 
 .folder-children .file-name {
   margin-inline-start: 2rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
 }
 
 .file-highlighted {
   background-color: lightgoldenrodyellow;
+}
+
+.file-icon {
+  inline-size: 1rem;
+  display: inline-block;
 }
 
 li {
