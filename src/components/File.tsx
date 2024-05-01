@@ -2,12 +2,14 @@ import type { FileSystemFile } from "../data/fileSystem";
 import { useState } from "react";
 import { Menu } from "./Menu.tsx";
 import { Icons } from "./Icons.tsx";
+import { useMenu } from "./providers/MenuProvider.tsx";
 
 export type FileProps = { node: FileSystemFile };
 
 export function File({ node }: FileProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isHighlighted, setIsHighlighted] = useState(false);
+
+  const { fileMenus, closeMenu, closeAllMenus, openMenu } = useMenu();
 
   return (
     <>
@@ -16,10 +18,11 @@ export function File({ node }: FileProps) {
           className={`file-name ${isHighlighted ? "file-highlighted" : ""}`}
           onContextMenu={(e) => {
             e.preventDefault();
-            setMenuOpen((prev) => !prev);
+
+            openMenu(node.name);
           }}
           onClick={() => {
-            setMenuOpen(false);
+            closeAllMenus();
 
             setIsHighlighted((prev) => !prev);
           }}
@@ -28,7 +31,7 @@ export function File({ node }: FileProps) {
           <span>{node.name}</span>
         </span>
 
-        {menuOpen && (
+        {fileMenus[node.name] && (
           <div
             className="menu-placement"
             style={{
@@ -38,7 +41,7 @@ export function File({ node }: FileProps) {
               left: "3rem",
             }}
           >
-            <Menu fileName={node.name} closeMenu={() => setMenuOpen(false)} />
+            <Menu fileName={node.name} closeMenu={() => closeMenu(node.name)} />
           </div>
         )}
       </li>
