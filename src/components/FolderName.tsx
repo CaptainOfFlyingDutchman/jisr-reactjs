@@ -1,11 +1,11 @@
 import type { FileSystemFile } from "../data/fileSystem.ts";
 
-type DirectoryNameProps = {
+type FolderNameProps = {
   childrenVisible: boolean;
   node: FileSystemFile;
 };
 
-export function DirectoryName({ childrenVisible, node }: DirectoryNameProps) {
+export function FolderName({ childrenVisible, node }: FolderNameProps) {
   return (
     <span className="folder-name">
       {childrenVisible ? <span>📂 </span> : <span>📁 </span>}

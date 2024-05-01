@@ -1,6 +1,6 @@
 import { File, FileProps } from "./File";
 import { useState } from "react";
-import { DirectoryName } from "./DirectoryName.tsx";
+import { FolderName } from "./FolderName.tsx";
 
 type FolderProps = { node: FileProps["node"] };
 
@@ -17,7 +17,7 @@ export function Folder({ node }: FolderProps) {
             <button onClick={() => setChildrenVisible(true)}>➕</button>
           )}
 
-          <DirectoryName childrenVisible={childrenVisible} node={node} />
+          <FolderName childrenVisible={childrenVisible} node={node} />
         </li>
 
         {childrenVisible && (
@@ -39,7 +39,7 @@ export function Folder({ node }: FolderProps) {
     <li key={node.name} className="folder">
       <button>➕</button>
 
-      <DirectoryName childrenVisible={childrenVisible} node={node} />
+      <FolderName childrenVisible={childrenVisible} node={node} />
     </li>
   );
 }
