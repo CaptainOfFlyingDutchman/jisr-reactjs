@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+  inline-size: 100%;
+}
+
+.tree {
+  min-inline-size: 17rem;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.folder .folder-name {
+  margin-inline-start: 1rem;
+}
+
+.folder + .folder-children {
+  margin-left: 2rem;
+  position: relative;
+}
+
+.folder + .folder-children::before {
+  content: ' ';
+  block-size: 100%;
+  border: 1px dotted gray;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.folder-children .file-name {
+  margin-inline-start: 2rem;
+}
+
+li {
+  margin: 0.5rem;
+  margin-inline: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  block-size: 100vh;
+  gap: 0.2rem;
+}
+
+.topbar {
+  padding: 1rem;
+  border-block-end: 1px solid lightgray;
+}
+
+.body {
+  display: flex;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.sidebar {
+  flex-basis: 18rem;
+  overflow: auto;
+  border-inline-end: 1px solid lightgray;
+}
+
+.content {
+  flex-grow: 1;
+}
