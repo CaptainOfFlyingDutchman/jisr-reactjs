@@ -1,14 +1,14 @@
 import type { FileSystemFile } from "../data/fileSystem.ts";
 
 type FolderNameProps = {
-  childrenVisible: boolean;
+  areChildrenVisible: boolean;
   node: FileSystemFile;
 };
 
-export function FolderName({ childrenVisible, node }: FolderNameProps) {
+export function FolderName({ areChildrenVisible, node }: FolderNameProps) {
   return (
     <span className="folder-name">
-      {childrenVisible ? <span>📂 </span> : <span>📁 </span>}
+      {areChildrenVisible ? <span>📂 </span> : <span>📁 </span>}
 
       {node.name}
     </span>

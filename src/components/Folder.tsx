@@ -5,22 +5,22 @@ import { FolderName } from "./FolderName.tsx";
 type FolderProps = { node: FileProps["node"] };
 
 export function Folder({ node }: FolderProps) {
-  const [childrenVisible, setChildrenVisible] = useState(false);
+  const [areChildrenVisible, setAreChildrenVisible] = useState(false);
 
   if (node.data) {
     return (
       <>
         <li key={node.name} className="folder">
-          {childrenVisible ? (
-            <button onClick={() => setChildrenVisible(false)}>➖</button>
+          {areChildrenVisible ? (
+            <button onClick={() => setAreChildrenVisible(false)}>➖</button>
           ) : (
-            <button onClick={() => setChildrenVisible(true)}>➕</button>
+            <button onClick={() => setAreChildrenVisible(true)}>➕</button>
           )}
 
-          <FolderName childrenVisible={childrenVisible} node={node} />
+          <FolderName areChildrenVisible={areChildrenVisible} node={node} />
         </li>
 
-        {childrenVisible && (
+        {areChildrenVisible && (
           <ul className="folder-children">
             {node.data.map((child) => {
               return child.type === "folder" ? (
@@ -39,7 +39,7 @@ export function Folder({ node }: FolderProps) {
     <li key={node.name} className="folder">
       <button>➕</button>
 
-      <FolderName childrenVisible={childrenVisible} node={node} />
+      <FolderName areChildrenVisible={areChildrenVisible} node={node} />
     </li>
   );
 }
