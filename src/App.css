@@ -81,6 +81,7 @@ li {
 }
 
 .sidebar {
+  min-inline-size: 18rem;
   flex-basis: 18rem;
   overflow: auto;
   border-inline-end: 1px solid lightgray;
