@@ -13,6 +13,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jotai": "^2.8.0",
+    "jotai-devtools": "^0.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-file-icon": "^1.4.0"
