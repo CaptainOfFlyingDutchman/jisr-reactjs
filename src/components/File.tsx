@@ -1,13 +1,16 @@
 import type { FileSystemFile } from "../data/fileSystem";
-import { useState } from "react";
 import { Menu } from "./Menu.tsx";
 import { Icons } from "./Icons.tsx";
 import { useMenu } from "./providers/MenuProvider.tsx";
+import { useAtom, useSetAtom } from "jotai";
+
+import { filesPreviewsAtom, selectedFileAtom } from "../atoms.ts";
 
 export type FileProps = { node: FileSystemFile };
 
 export function File({ node }: FileProps) {
-  const [isHighlighted, setIsHighlighted] = useState(false);
+  const setFilesPreviews = useSetAtom(filesPreviewsAtom);
+  const [selectedFile, setSelectedFile] = useAtom(selectedFileAtom);
 
   const { fileMenus, closeMenu, closeAllMenus, openMenu } = useMenu();
 
@@ -15,7 +18,7 @@ export function File({ node }: FileProps) {
     <>
       <li key={node.name}>
         <span
-          className={`file-name ${isHighlighted ? "file-highlighted" : ""}`}
+          className={`file-name ${selectedFile?.name === node.name ? "file-highlighted" : ""}`}
           onContextMenu={(e) => {
             e.preventDefault();
 
@@ -24,7 +27,8 @@ export function File({ node }: FileProps) {
           onClick={() => {
             closeAllMenus();
 
-            setIsHighlighted((prev) => !prev);
+            setFilesPreviews((prev) => ({ ...prev, [node.name]: node }));
+            setSelectedFile(() => node);
           }}
         >
           <span className="file-icon">{Icons[node.meta as string]}</span>

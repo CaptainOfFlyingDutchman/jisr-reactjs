@@ -2,8 +2,14 @@ import "./App.css";
 import { Tree } from "./components/Tree.tsx";
 import { useEffect } from "react";
 import { useMenu } from "./components/providers/MenuProvider.tsx";
+import { useAtomValue } from "jotai";
+import { filesPreviewsAtom, selectedFileAtom } from "./atoms";
+import { FilePreview } from "./components/FilePreview";
 
 export function App() {
+  const filesPreviews = useAtomValue(filesPreviewsAtom);
+  const selectedFile = useAtomValue(selectedFileAtom);
+
   const { closeAllMenus } = useMenu();
 
   useEffect(() => {
@@ -24,7 +30,7 @@ export function App() {
         </div>
 
         <div className="content">
-          <h1>Body content</h1>
+          <FilePreview file={filesPreviews[selectedFile?.name || ""]} />
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import {
 } from "react";
 
 type IdProviderFn = (id: string) => void;
+
 type NoopFn = () => void;
 
 type MenuContextValue = {
